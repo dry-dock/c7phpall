@@ -1,4 +1,4 @@
-# c7phpall
+c7phpall
 ===============
 
 Shippable CI image for PHP on CentOS 7. Available PHP versions:
