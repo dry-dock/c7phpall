@@ -1,71 +1,33 @@
 #!/bin/bash -e
 
-locale-gen en_US.UTF-8
-export LANG=en_US.UTF-8
+LC_ALL="en_US.UTF-8"
+export LANG=en_GB.utf8
 
-yum clean
-mv /var/lib/apt/lists/* /tmp
-mkdir -p /var/lib/apt/lists/partial
-yum clean
+sudo yum install autoconf libtool re2c bison libxml2-devel bzip2-devel libcurl-devel libpng-devel cmake libicu-devel gcc-c++ libmcrypt-devel libwebp-devel libjpeg-devel openssl-devel openldap-devel libtidy.x86_64 libtidy-devel.x86_64 libxslt.x86_64 libxslt-devel.x86_64 glibc-utils.x86_64 -y
+ln -s /usr/lib64/libldap.so /usr/include/libldap.so && ln -s /usr/lib64/liblber.so /usr/include/liblber.so
 
+#Download pickle
+git clone https://github.com/FriendsOfPHP/pickle.git /tmp/pickle
+ln -s /tmp/pickle/bin/pickle /usr/bin/
 
-# Install dependencies
-echo "=========== Installing dependencies ============"
-#yum purge `dpkg -l | grep php| awk '{print $2}' |tr "\n" " "`
-add-yum-repository -y ppa:ondrej/php
+echo "============ Installing phpenv ============="
+git clone git://github.com/CHH/phpenv.git $HOME/phpenv
+$HOME/phpenv/bin/phpenv-install.sh
+echo 'export PATH=$HOME/.phpenv/bin:$PATH' >> /etc/drydock/.env
+echo 'export PATH=$HOME/.phpenv/libexec:$PATH' >> /etc/drydock/.env
+rm -rf $HOME/phpenv
 
-yum update
-yum install php5.6-dev php7.0-dev php7.1-dev php7.2-dev
-yum install php5.6 php5.6-mbstring php5.6-mcrypt php5.6-mysql php5.6-xml
-
-yum install -y git wget cmake libmcrypt-dev libreadline-dev libzmq-dev
-yum install -y libxml2-dev     \
-                libjpeg-dev     \
-                libpng-dev      \
-                libtidy-dev     \
-                libxml2-dev     \
-                libpcre3-dev    \
-                libbz2-dev      \
-                libcurl4-openssl-dev    \
-                libminiupnpc-dev\
-                libdb5.3-dev    \
-                libpng12-dev    \
-                libxpm-dev      \
-                libfreetype6-dev        \
-                libgd-dev       \
-                libgmp-dev      \
-                libmhash-dev    \
-                unixodbc-dev    \
-                freetds-dev     \
-                libpspell-dev   \
-                libsnmp-dev     \
-                libxslt1-dev    \
-                libmcrypt-dev   \
-                bzip2
+export PATH=$HOME/.phpenv/bin:$PATH
+echo "PATH=$HOME/.phpenv/bin:$PATH"
+export PATH=$HOME/.phpenv/libexec:$PATH
+echo "PATH=$HOME/.phpenv/libexec:$PATH"
+eval "$(phpenv init -)"
 
 # Install php-build
 echo "============ Installing php-build =============="
 git clone git://github.com/php-build/php-build.git $HOME/php-build
 $HOME/php-build/install.sh
 rm -rf $HOME/php-build
-
-#Download pickle
-git clone https://github.com/FriendsOfPHP/pickle.git /tmp/pickle
-ln -s /tmp/pickle/bin/pickle /usr/bin/
-
-# Install phpenv
-git clone git://github.com/CHH/phpenv.git $HOME/phpenv
-$HOME/phpenv/bin/phpenv-install.sh
-echo 'export PATH=$HOME/.phpenv/bin:$PATH' >> /etc/drydock/.env
-rm -rf $HOME/phpenv
-
-# Activate phpenv
-export PATH=$HOME/.phpenv/bin:$PATH
-#echo "PATH=$HOME/.phpenv/bin:$PATH"
-eval "$(phpenv init -)"
-
-yum install libldap2-dev libldb-dev
-ln -s /usr/lib/x86_64-linux-gnu/libldap.so /usr/include/libldap.so && ln -s /usr/lib/x86_64-linux-gnu/liblber.so /usr/include/liblber.so
 
 # Install librabbitmq
 echo "============ Installing librabbitmq ============"
@@ -82,7 +44,7 @@ make
 make install
 cd /
 
-for file in /u16phpall/version/*.sh;
+for file in /c7phpall/version/*.sh;
 do
   . $file
 done
