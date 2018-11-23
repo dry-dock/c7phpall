@@ -51,8 +51,7 @@ done
 
 # Cleaning package lists
 echo "================= Cleaning package lists ==================="
-yum clean
-yum autoclean
+yum clean expire-cache
 yum autoremove
 
 cd /
