@@ -1,0 +1,11 @@
+language: php
+
+build:
+  pre_ci:
+    - docker build -t=drydock/c7phpall:dev
+  pre_ci_boot:
+    image_name: drydock/c7phpall
+    image_tag: dev
+    pull: false
+  ci:
+    - php --version
