@@ -3,29 +3,16 @@ c7phpall
 
 Shippable CI image for PHP on CentOS 7. Available PHP versions:
 
-  1. PHP 5.6.38
-  2. PHP 7.0.32
-  3. PHP 7.1.24
-  4. PHP 7.2.12
-  
+  1  PHP 7.1.25
+  2. PHP 7.2.14
+  3. PHP 7.3.1
 
 Each PHP version is installed with php-build and managed with phpenv. Several 
 PHP extensions are also available out of the box. Unless otherwise noted, the 
 latest version of the extension at the time the image was built is what is 
 available in the image:
 
-  1. PHP 5.6.38
-
-      * amqp 1.6.0
-      * bzip
-      * intl
-      * memcache
-      * memcached 2.2.0
-      * mongo
-      * redis
-      * zmq
-
-  2. PHP 7.0.32, PHP 7.1.24 and 7.2.12
+  1. PHP 7.1.25, PHP 7.2.14 and 7.3.1
 
       * amqp
       * bzip
