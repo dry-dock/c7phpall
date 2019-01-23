@@ -2,7 +2,7 @@ language: php
 
 build:
   pre_ci:
-    - docker build -t=drydock/c7phpall:dev .
+    - docker build -t=drydock/c7phpalltest:dev .
   pre_ci_boot:
     image_name: drydock/c7phpall
     image_tag: dev
