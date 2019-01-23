@@ -1,0 +1,18 @@
+language: php
+
+build:
+  pre_ci:
+    - docker build -t=drydock/c7phpall:dev .
+  pre_ci_boot:
+    image_name: drydock/c7phpall
+    image_tag: dev
+    pull: false
+  ci:
+    - source /etc/drydock/.env 
+    - eval "$(phpenv init -)"
+    - /root/.phpenv/bin/phpenv global 7.1
+    - php --version
+    - /root/.phpenv/bin/phpenv global 7.2
+    - php --version
+    - /root/.phpenv/bin/phpenv global 7.3
+    - php --version
