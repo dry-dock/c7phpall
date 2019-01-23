@@ -3,7 +3,7 @@
 
 export PHP_VERSION="7.3.1"
 echo "============ Building PHP version $PHP_VERSION  =============="
-PHP_BUILD_CONFIGURE_OPTS="--with-bz2 --enable-intl --enable-zip --without-libzip --with-ldap=/usr/include" php-build -i development "$PHP_VERSION" $HOME/.phpenv/versions/7.3
+PHP_BUILD_CONFIGURE_OPTS="--with-bz2 --enable-intl --enable-zip without --with-libzip --with-ldap=/usr/include" php-build -i development "$PHP_VERSION" $HOME/.phpenv/versions/7.3
 
 # Setting phpenv to PHP7.0_VERSION
 echo "============ Setting phpenv to 7.3 ============"
