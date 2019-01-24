@@ -1,30 +1,32 @@
 #!/bin/bash -e
 
-export PHP_VERSION="7.0.32"
+
+export PHP_VERSION="7.3.1"
+export PHPENV_VERSION_ALIAS="7.3"
 echo "============ Building PHP version $PHP_VERSION  =============="
-PHP_BUILD_CONFIGURE_OPTS="--with-bz2 --enable-intl --with-ldap=/usr/include" php-build -i development "$PHP_VERSION" $HOME/.phpenv/versions/7.0
+PHP_BUILD_CONFIGURE_OPTS="--with-bz2 --enable-intl --enable-zip --without-libzip --with-ldap=/usr/include" php-build -i development "$PHP_VERSION" $HOME/.phpenv/versions/"$PHPENV_VERSION_ALIAS"
 
 # Setting phpenv to PHP7.0_VERSION
-echo "============ Setting phpenv to 7.0 ============"
+echo "============ Setting phpenv to "$PHPENV_VERSION_ALIAS" ============"
 phpenv rehash
-phpenv global 7.0
+phpenv global "$PHPENV_VERSION_ALIAS"
 
 # Install phpunit
-PHPUNIT_VERSION="6.5.13"
+PHPUNIT_VERSION="7.5.1"
 echo "============ Installing PHPUnit ============="
 wget -nv https://phar.phpunit.de/phpunit-"$PHPUNIT_VERSION".phar
 chmod +x phpunit-"$PHPUNIT_VERSION".phar
-mv phpunit-"$PHPUNIT_VERSION".phar $HOME/.phpenv/versions/7.0/bin/phpunit
+mv phpunit-"$PHPUNIT_VERSION".phar $HOME/.phpenv/versions/"$PHPENV_VERSION_ALIAS"/bin/phpunit
 
 # Install Composer
 echo "============ Installing Composer ============"
 curl -sS http://getcomposer.org/installer | php
 chmod +x composer.phar
-mv composer.phar $HOME/.phpenv/versions/7.0/bin/composer
+mv composer.phar $HOME/.phpenv/versions/"$PHPENV_VERSION_ALIAS"/bin/composer
 
 #install pickle
 cd /tmp/pickle
-$HOME/.phpenv/versions/7.0/bin/composer install
+$HOME/.phpenv/versions/"$PHPENV_VERSION_ALIAS"/bin/composer install --no-dev
 
 # Install php extensions
 echo "=========== Installing PHP extensions =============="
@@ -38,4 +40,3 @@ printf '\n' | bin/pickle install --with-configure-options=/tmp/pickle-mongodb-op
 rm /tmp/pickle-mongodb-opts
 
 cd /
-
