@@ -3,7 +3,7 @@ c7phpall
 
 Shippable CI image for PHP on CentOS 7. Available PHP versions:
 
-  1. PHP 7.1.25
+  1. PHP 7.1.26
   2. PHP 7.2.14
   3. PHP 7.3.1
   
