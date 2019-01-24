@@ -26,7 +26,7 @@ mv composer.phar $HOME/.phpenv/versions/7.2/bin/composer
 
 #install pickle
 cd /tmp/pickle
-$HOME/.phpenv/versions/7.2/bin/composer install --no-dev
+$HOME/.phpenv/versions/7.2/bin/composer install 
 
 # Install php extensions
 echo "=========== Installing PHP extensions =============="
