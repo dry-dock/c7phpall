@@ -19,7 +19,6 @@ mv phpunit-"$PHPUNIT_VERSION".phar $HOME/.phpenv/versions/7.3/bin/phpunit
 
 # Install Composer
 echo "============ Installing Composer ============"
-php composer.phar update
 curl -sS http://getcomposer.org/installer | php
 chmod +x composer.phar
 mv composer.phar $HOME/.phpenv/versions/7.3/bin/composer
