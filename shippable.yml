@@ -1,10 +1,5 @@
 language: php
 
-php: 
-  - "7.1" #7.1.26
-  - "7.2" #7.2.14
-  - "7.3" #7.3.1
-
 build:
   pre_ci: docker build -t=drydock/c7phpalltest:dev .
   
