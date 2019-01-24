@@ -1,0 +1,18 @@
+language: php
+
+php: 
+  - "7.1" #7.1.26
+  - "7.2" #7.2.14
+  - "7.3" #7.3.1
+
+build:
+  pre_ci:
+    - docker build -t=drydock/c7phpalltest:dev .
+  pre_ci_boot:
+    image_name: drydock/c7phpalltest
+    image_tag: dev
+    pull: false
+  ci:
+    - php --version
+    - php --rf ldap_connect
+    - php --rf imagettftext
