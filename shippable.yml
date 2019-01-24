@@ -4,7 +4,7 @@ build:
   pre_ci:
     - docker build -t=drydock/c7phpalltest:dev .
   pre_ci_boot:
-    image_name: drydock/c7phpall
+    image_name: drydock/c7phpalltest
     image_tag: dev
     pull: false
   ci:
