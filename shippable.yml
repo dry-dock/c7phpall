@@ -6,8 +6,8 @@ php:
   - "7.3" #7.3.1
 
 build:
-  pre_ci:
-    - docker build -t=drydock/c7phpalltest:dev .
+  pre_ci: docker build -t=drydock/c7phpalltest:dev .
+  
   pre_ci_boot:
     image_name: drydock/c7phpalltest
     image_tag: dev
@@ -16,3 +16,4 @@ build:
     - php --version
     - php --rf ldap_connect
     - php --rf imagettftext
+
