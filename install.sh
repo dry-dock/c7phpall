@@ -3,7 +3,7 @@
 LC_ALL="en_US.UTF-8"
 export LANG=en_GB.utf8
 
-sudo yum install autoconf libtool re2c bison libzip libzip-devel libxml2-devel bzip2-devel libcurl-devel libpng-devel cmake libicu-devel gcc-c++ libmcrypt-devel libwebp-devel libjpeg-devel openssl-devel openldap-devel libtidy.x86_64 libtidy-devel.x86_64 libxslt.x86_64 libxslt-devel.x86_64 glibc-utils.x86_64 -y
+sudo yum install autoconf libtool re2c bison libzip libzip-devel libxml2-devel bzip2-devel libcurl-devel libpng-devel cmake libicu-devel gcc-c++ libmcrypt-devel libwebp-devel libjpeg-devel openssl-devel openldap-devel freetype-devel.x86_64 libtidy.x86_64 libtidy-devel.x86_64 libxslt.x86_64 libxslt-devel.x86_64 glibc-utils.x86_64 -y
 ln -s /usr/lib64/libldap.so /usr/include/libldap.so && ln -s /usr/lib64/liblber.so /usr/include/liblber.so
 
 #Download pickle
