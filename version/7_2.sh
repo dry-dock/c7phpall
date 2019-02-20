@@ -1,7 +1,7 @@
 #!/bin/bash -e
 
 
-export PHP_VERSION="7.2.14"
+export PHP_VERSION="7.2.15"
 export PHPENV_VERSION_ALIAS="7.2"
 echo "============ Building PHP version $PHP_VERSION  =============="
 
@@ -13,7 +13,7 @@ phpenv rehash
 phpenv global "$PHPENV_VERSION_ALIAS"
 
 # Install phpunit
-PHPUNIT_VERSION="7.5.1"
+PHPUNIT_VERSION="8.0.0"
 echo "============ Installing PHPUnit ============="
 wget -nv https://phar.phpunit.de/phpunit-"$PHPUNIT_VERSION".phar
 chmod +x phpunit-"$PHPUNIT_VERSION".phar
