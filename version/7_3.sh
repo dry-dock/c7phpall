@@ -1,7 +1,7 @@
 #!/bin/bash -e
 
 
-export PHP_VERSION="7.3.1"
+export PHP_VERSION="7.3.2"
 export PHPENV_VERSION_ALIAS="7.3"
 echo "============ Building PHP version $PHP_VERSION  =============="
 PHP_BUILD_CONFIGURE_OPTS="--with-bz2 --enable-intl --enable-zip --without-libzip --with-ldap=/usr/include --with-freetype-dir=/usr" php-build -i development "$PHP_VERSION" $HOME/.phpenv/versions/"$PHPENV_VERSION_ALIAS"
@@ -12,7 +12,7 @@ phpenv rehash
 phpenv global "$PHPENV_VERSION_ALIAS"
 
 # Install phpunit
-PHPUNIT_VERSION="7.5.1"
+PHPUNIT_VERSION="8.0.0"
 echo "============ Installing PHPUnit ============="
 wget -nv https://phar.phpunit.de/phpunit-"$PHPUNIT_VERSION".phar
 chmod +x phpunit-"$PHPUNIT_VERSION".phar
